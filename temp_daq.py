@@ -4,24 +4,31 @@ import csv
 import sys
 from datetime import datetime
 from pathlib import Path
+import yaml
 
 
-def main(target_directory_path):
+def main(config_file_path):
+    with open(config_file_path, 'r') as config_file:
+        config_yaml = yaml.full_load(config_file)
+        target_directory_path = Path(config_yaml["storage_directory"])
+
+        sensor_mapping = {sensor["id"]: sensor["name"] for sensor in config_yaml["sensors"]}
+
+        print(sensor_mapping)
+
     target_directory_path.mkdir(exist_ok=True)
     current_timestamp = datetime.utcnow().strftime("%FT%H_%M_%S")
-
     temp_csv_filename = target_directory_path.joinpath("temp_data_" + current_timestamp + ".csv")
 
     with open(temp_csv_filename, 'w+', buffering=1) as temp_csv_file:
         temp_sensors = W1ThermSensor.get_available_sensors()
-        temp_csv_fieldnames = ['timestamp'] + [sensor.id for sensor in temp_sensors]
+        temp_csv_fieldnames = get_temp_dict(temp_sensors, sensor_mapping).keys()
 
         temp_csv_writer = csv.DictWriter(temp_csv_file, temp_csv_fieldnames)
         temp_csv_writer.writeheader()
 
         while True:
-            data_dict = {'timestamp': datetime.utcnow().isoformat()}
-            data_dict.update({sensor.id: sensor.get_temperature() for sensor in temp_sensors})
+            data_dict = get_temp_dict(temp_sensors, sensor_mapping)
 
             print(data_dict)
             temp_csv_writer.writerow(data_dict)
@@ -29,10 +36,16 @@ def main(target_directory_path):
             time.sleep(5)
 
 
+def get_temp_dict(temp_sensors, sensor_mapping):
+    data_dict = {'timestamp': datetime.utcnow().isoformat()}
+    data_dict.update({sensor_mapping.get(sensor.id, sensor.id): sensor.get_temperature() for sensor in temp_sensors})
+    return data_dict
+
+
 if __name__ == "__main__":
     if len(sys.argv) <= 1:
-        sys.exit("No target directory as command line argument was given.")
+        sys.exit("No config file path as command line argument was given.")
 
-    dirPath = Path(sys.argv[1])
+    configFilePath = Path(sys.argv[1])
 
-    main(dirPath)
+    main(configFilePath)
