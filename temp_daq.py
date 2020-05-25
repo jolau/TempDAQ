@@ -10,11 +10,9 @@ import yaml
 def main(config_file_path):
     with open(config_file_path, 'r') as config_file:
         config_yaml = yaml.full_load(config_file)
+
         target_directory_path = Path(config_yaml["storage_directory"])
-
         sensor_mapping = {sensor["id"]: sensor["name"] for sensor in config_yaml["sensors"]}
-
-        print(sensor_mapping)
 
     target_directory_path.mkdir(exist_ok=True)
     current_timestamp = datetime.utcnow().strftime("%FT%H_%M_%S")
@@ -38,6 +36,7 @@ def main(config_file_path):
 
 def get_temp_dict(temp_sensors, sensor_mapping):
     data_dict = {'timestamp': datetime.utcnow().isoformat()}
+    # add sensor name : temperature map, take sensor.id as name if no name pair exists
     data_dict.update({sensor_mapping.get(sensor.id, sensor.id): sensor.get_temperature() for sensor in temp_sensors})
     return data_dict
 
