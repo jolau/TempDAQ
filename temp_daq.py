@@ -4,8 +4,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 import yaml
-from twisted.internet import task
-from twisted.internet import reactor
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 def main(config_file_path):
@@ -26,9 +25,9 @@ def main(config_file_path):
         temp_csv_writer = csv.DictWriter(temp_csv_file, temp_csv_fieldnames)
         temp_csv_writer.writeheader()
 
-        looping = task.LoopingCall(log_temperature, *(sensor_mapping, temp_csv_writer, temp_sensors))
-        looping.start(5)
-        reactor.run()
+        scheduler = BlockingScheduler()
+        scheduler.add_job(log_temperature, 'interval', (sensor_mapping, temp_csv_writer, temp_sensors), seconds=5)
+        scheduler.start()
 
 
 def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors):
