@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="pi@192.168.1.165:22 agent" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="pi@192.168.1.168:22" autoUploadExternalChanges="true">
     <serverData>
-      <paths name="pi@192.168.1.165:22 agent">
+      <paths name="pi@192.168.1.168:22">
         <serverdata>
           <mappings>
             <mapping deploy="/home/pi/Projects/TempDAQ" local="$PROJECT_DIR$" />

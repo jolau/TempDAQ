@@ -1,10 +1,11 @@
-import time
 from w1thermsensor import W1ThermSensor
 import csv
 import sys
 from datetime import datetime
 from pathlib import Path
 import yaml
+from twisted.internet import task
+from twisted.internet import reactor
 
 
 def main(config_file_path):
@@ -25,13 +26,15 @@ def main(config_file_path):
         temp_csv_writer = csv.DictWriter(temp_csv_file, temp_csv_fieldnames)
         temp_csv_writer.writeheader()
 
-        while True:
-            data_dict = get_temp_dict(temp_sensors, sensor_mapping)
+        looping = task.LoopingCall(log_temperature, *(sensor_mapping, temp_csv_writer, temp_sensors))
+        looping.start(5)
+        reactor.run()
 
-            print(data_dict)
-            temp_csv_writer.writerow(data_dict)
 
-            time.sleep(5)
+def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors):
+    data_dict = get_temp_dict(temp_sensors, sensor_mapping)
+    print(data_dict)
+    temp_csv_writer.writerow(data_dict)
 
 
 def get_temp_dict(temp_sensors, sensor_mapping):
