@@ -1,5 +1,5 @@
-storage_directory: "/home/pi/Documents/"
-interval: 3
+storage_directory: "/home/pi/Documents/temp_daq/"
+interval: 10
 sensors:
   - name: sensor1
     id: 00000c43b797
