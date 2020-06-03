@@ -25,9 +25,9 @@ def main(config_file_path):
     temp_csv_filename = target_directory_path.joinpath("temp_data_" + current_timestamp + ".csv")
     if status_led_pin is not None:
         status_led = LED(status_led_pin)
+        status_led.on()
     else:
         status_led = None
-
 
     with open(temp_csv_filename, 'w+', buffering=1) as temp_csv_file:
         temp_sensors = W1ThermSensor.get_available_sensors()

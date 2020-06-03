@@ -21,8 +21,9 @@ Start with `python3 temp_daq.py [full path to temp_daq_config.yaml]`
 3. Enter the _HWID_ in the temp_daq_config.yaml
 
 ### Status led
-If status led is enabled in config, it will blink when running:
-- Slow blinking: app is running
+If status led is enabled in config, it will glow when running:
+- Constant glow: app is started but not yet initialized
+- Slow blinking: app is running normally
 - Fast blinking: temperature acquisition is happening
 
 ## Config file
