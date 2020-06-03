@@ -12,6 +12,7 @@ def main(config_file_path):
         config_yaml = yaml.full_load(config_file)
 
         target_directory_path = Path(config_yaml["storage_directory"])
+        interval = config_yaml["interval"]
         sensor_mapping = {sensor["id"]: sensor["name"] for sensor in config_yaml["sensors"]}
 
     target_directory_path.mkdir(exist_ok=True)
@@ -26,9 +27,13 @@ def main(config_file_path):
         temp_csv_writer.writeheader()
 
         scheduler = BlockingScheduler()
-        scheduler.add_job(log_temperature, 'interval', (sensor_mapping, temp_csv_writer, temp_sensors), seconds=5)
-        scheduler.start()
+        scheduler.add_job(log_temperature, 'interval', (sensor_mapping, temp_csv_writer, temp_sensors), seconds=interval)
 
+        try:
+            scheduler.start()
+        except (KeyboardInterrupt, SystemExit):
+            pass
+        
 
 def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors):
     data_dict = get_temp_dict(temp_sensors, sensor_mapping)

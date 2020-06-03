@@ -1,4 +1,5 @@
 storage_directory: "/home/pi/Documents/"
+interval: 3
 sensors:
   - name: sensor1
     id: 00000c43b797
