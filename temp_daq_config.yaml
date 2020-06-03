@@ -1,5 +1,7 @@
 storage_directory: "/home/pi/Documents/temp_daq/"
 interval: 10
+status_led: true
+status_led_pin: 21
 sensors:
   - name: sensor1
     id: 00000c43b797

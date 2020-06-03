@@ -20,6 +20,11 @@ Start with `python3 temp_daq.py [full path to temp_daq_config.yaml]`
 2. The bash command `w1thermsensor ls` lists the _HWID_ and _Type_ of the sensor
 3. Enter the _HWID_ in the temp_daq_config.yaml
 
+### Status led
+If status led is enabled in config, it will blink when running:
+- Slow blinking: app is running
+- Fast blinking: temperature acquisition is happening
+
 ## Config file
 short primer on syntax of yaml: https://learnxinyminutes.com/docs/yaml/
 
@@ -27,6 +32,8 @@ short primer on syntax of yaml: https://learnxinyminutes.com/docs/yaml/
 ```yaml
 storage_directory: "/home/pi/Documents/temp_daq/" # directory where to put output csv files
 interval: 10 # log temperature every [x] seconds
+status_led: true # enable/disable status led, blinks everytime a vibration file is written
+status_led_pin: 21  # only read if status_led == true
 sensors: 
   - name: sensor1 # name of sensor which is used for the output csv
     id: 00000c43b797 # id of sensor
