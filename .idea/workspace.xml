@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d4813b3-a598-4330-8613-4c2373921bba" name="Default Changelist" comment="" />
+    <list default="true" id="7d4813b3-a598-4330-8613-4c2373921bba" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UbxLogger/ubx_logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/../UbxLogger/ubx_logger.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,6 +103,8 @@
       <workItem from="1589989170660" duration="6857000" />
       <workItem from="1590423868403" duration="97000" />
       <workItem from="1591261851653" duration="6000" />
+      <workItem from="1591795388827" duration="558000" />
+      <workItem from="1591807456041" duration="224000" />
     </task>
     <servers />
   </component>
@@ -143,10 +148,15 @@
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
     <state width="1878" height="406" key="GridCell.Tab.1.right/1920.23.1920.1177/0.23.1920.1177/-1440.958.1440.877@0.23.1920.1177" timestamp="1589996419858" />
-    <state x="469" y="250" key="SettingsEditor" timestamp="1589989195853">
-      <screen x="0" y="23" width="1920" height="1177" />
+    <state x="352" y="178" key="SettingsEditor" timestamp="1591807614683">
+      <screen x="0" y="23" width="1440" height="877" />
     </state>
+    <state x="352" y="178" key="SettingsEditor/0.23.1440.877@0.23.1440.877" timestamp="1591807614683" />
     <state x="469" y="250" key="SettingsEditor/1920.23.1920.1177/0.23.1920.1177/-1440.958.1440.877@0.23.1920.1177" timestamp="1589989195853" />
+    <state x="611" y="199" key="ftp.server.browser" timestamp="1591807607882">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="611" y="199" key="ftp.server.browser/0.23.1440.877@0.23.1440.877" timestamp="1591807607882" />
     <state x="625" y="288" width="670" height="676" key="search.everywhere.popup" timestamp="1589994396116">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
