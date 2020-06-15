@@ -13,7 +13,7 @@ Data Acquisition (DAQ) for 1-wire temperature sensors like the digital sensor [D
 ## Usage
 Start with `python3 temp_daq.py [full path to temp_daq_config.yaml]`
 
-**Important: you might need to reboot the Raspberry Pi if plug sensors in order to be detected!**
+**Important: you need to reboot the Raspberry Pi if you replug sensors!**
 
 ### Get sensor id
 1. Plug in **exclusively** the sensor you want to identify
