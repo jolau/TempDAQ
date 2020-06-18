@@ -1,3 +1,5 @@
+import time
+
 from w1thermsensor import W1ThermSensor
 import csv
 import sys
@@ -7,18 +9,20 @@ import yaml
 from apscheduler.schedulers.blocking import BlockingScheduler
 from gpiozero import LED
 
+
 def main(config_file_path):
     with open(config_file_path, 'r') as config_file:
         config_yaml = yaml.full_load(config_file)
 
         target_directory_path = Path(config_yaml["storage_directory"])
         interval = config_yaml["interval"]
-        if(config_yaml["status_led"]):
+        if config_yaml["status_led"]:
             status_led_pin = config_yaml["status_led_pin"]
         else:
             status_led_pin = None
 
-        sensor_mapping = {sensor["id"]: sensor["name"] for sensor in config_yaml["sensors"]}
+        sensor_names = {sensor["id"]: sensor["name"] for sensor in config_yaml["sensors"]}
+        sensor_resolutions = {sensor["id"]: sensor["resolution"] for sensor in config_yaml["sensors"]}
 
     target_directory_path.mkdir(exist_ok=True)
     current_timestamp = datetime.utcnow().strftime("%FT%H_%M_%S")
@@ -31,19 +35,26 @@ def main(config_file_path):
 
     with open(temp_csv_filename, 'w+', buffering=1) as temp_csv_file:
         temp_sensors = W1ThermSensor.get_available_sensors()
-        temp_csv_fieldnames = get_temp_dict(temp_sensors, sensor_mapping).keys()
 
+        for sensor in temp_sensors:
+            resolution = sensor_resolutions.get(sensor.id, None)
+            if 9 <= resolution <= 12:
+                sensor.set_resolution(resolution)
+                print("Set resolution of sensor {} to {} bit".format(sensor_names.get(sensor.id, sensor.id), resolution))
+
+        temp_csv_fieldnames = get_temp_dict(temp_sensors, sensor_names).keys()
         temp_csv_writer = csv.DictWriter(temp_csv_file, temp_csv_fieldnames)
         temp_csv_writer.writeheader()
 
         scheduler = BlockingScheduler()
-        scheduler.add_job(log_temperature, 'interval', (sensor_mapping, temp_csv_writer, temp_sensors, status_led), seconds=interval, next_run_time=datetime.now())
+        scheduler.add_job(log_temperature, 'interval', (sensor_names, temp_csv_writer, temp_sensors, status_led),
+                          seconds=interval, next_run_time=datetime.now())
 
         try:
             scheduler.start()
         except (KeyboardInterrupt, SystemExit):
             pass
-        
+
 
 def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors, status_led=None):
     if status_led is not None:
@@ -60,7 +71,13 @@ def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors, status_led=No
 def get_temp_dict(temp_sensors, sensor_mapping):
     data_dict = {'timestamp': datetime.utcnow().isoformat()}
     # add sensor name : temperature map, take sensor.id as name if no name pair exists
-    data_dict.update({sensor_mapping.get(sensor.id, sensor.id): sensor.get_temperature() for sensor in temp_sensors})
+    for sensor in temp_sensors:
+        start = time.time()
+        temperature = sensor.get_temperature()
+        end = time.time()
+        print("time needed for {}: {:f}".format(sensor.id, end - start))
+
+        data_dict.update({sensor_mapping.get(sensor.id, sensor.id): temperature})
     return data_dict
 
 

@@ -28,6 +28,13 @@ If the status led is enabled in config, it will glow when running:
 
 ## Config file
 short primer on syntax of yaml: https://learnxinyminutes.com/docs/yaml/
+### Resolutions
+| resolution [bit] | readout time   [ms] |
+|------------------|---------------------|
+| 9                | 93.75               |
+| 10               | 187.5               |
+| 11               | 375                 |
+| 12               | 750                 |
 
 ### Example config with explanation
 ```yaml
