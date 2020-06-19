@@ -1,5 +1,5 @@
 import time
-
+from threading import Thread
 from w1thermsensor import W1ThermSensor
 import csv
 import sys
@@ -22,7 +22,6 @@ def main(config_file_path):
             status_led_pin = None
 
         sensor_names = {sensor["id"]: sensor["name"] for sensor in config_yaml["sensors"]}
-        sensor_resolutions = {sensor["id"]: sensor["resolution"] for sensor in config_yaml["sensors"]}
 
     target_directory_path.mkdir(exist_ok=True)
     current_timestamp = datetime.utcnow().strftime("%FT%H_%M_%S")
@@ -35,12 +34,6 @@ def main(config_file_path):
 
     with open(temp_csv_filename, 'w+', buffering=1) as temp_csv_file:
         temp_sensors = W1ThermSensor.get_available_sensors()
-
-        for sensor in temp_sensors:
-            resolution = sensor_resolutions.get(sensor.id, None)
-            if 9 <= resolution <= 12:
-                sensor.set_resolution(resolution)
-                print("Set resolution of sensor {} to {} bit".format(sensor_names.get(sensor.id, sensor.id), resolution))
 
         temp_csv_fieldnames = get_temp_dict(temp_sensors, sensor_names).keys()
         temp_csv_writer = csv.DictWriter(temp_csv_file, temp_csv_fieldnames)
@@ -57,6 +50,7 @@ def main(config_file_path):
 
 
 def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors, status_led=None):
+    # start = time.time()
     if status_led is not None:
         status_led.blink(on_time=0.1, off_time=0.1)
 
@@ -67,18 +61,37 @@ def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors, status_led=No
     if status_led is not None:
         status_led.blink(on_time=1, off_time=1)
 
+    # end = time.time()
+    # print("time needed for {}: {:f}".format("", end - start))
+
 
 def get_temp_dict(temp_sensors, sensor_mapping):
     data_dict = {'timestamp': datetime.utcnow().isoformat()}
-    # add sensor name : temperature map, take sensor.id as name if no name pair exists
-    for sensor in temp_sensors:
-        start = time.time()
-        temperature = sensor.get_temperature()
-        end = time.time()
-        print("time needed for {}: {:f}".format(sensor.id, end - start))
 
-        data_dict.update({sensor_mapping.get(sensor.id, sensor.id): temperature})
+    temps = get_temps(temp_sensors)
+
+    for (sensor_id, temp) in temps.items():
+        # add sensor name : temperature map, take sensor.id as name if no name pair exists
+        data_dict.update({sensor_mapping.get(sensor_id, sensor_id) + " [°C]": temp})
+
     return data_dict
+
+
+def get_temps(temp_sensors):
+    temps = {}
+
+    threads = []
+    for sensor in temp_sensors:
+        process = Thread(target=get_temp, args=[sensor, temps])
+        process.start()
+        threads.append(process)
+    for process in threads:
+        process.join()
+    return temps
+
+
+def get_temp(sensor, temps):
+    temps.update({sensor.id: sensor.get_temperature()})
 
 
 if __name__ == "__main__":

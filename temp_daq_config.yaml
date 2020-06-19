@@ -5,10 +5,7 @@ status_led_pin: 21
 sensors:
   - name: sensor1
     id: 00000c43b797
-    resolution: 9
   - name: sensor2
     id: 00000c442341
-    resolution: 12
   - name: sensor3
     id: 00000c4419a8
-    resolution: 12

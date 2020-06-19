@@ -15,6 +15,9 @@ Start with `python3 temp_daq.py [full path to temp_daq_config.yaml]`
 
 **Important: you need to reboot the Raspberry Pi if you replug sensors!**
 
+The app logs _all connected_ sensors, but if the sensor id is added to the config file, 
+the configured name will be used for logging. 
+
 ### Get sensor id
 1. Plug in **exclusively** the sensor you want to identify
 2. The bash command `w1thermsensor ls` lists the _HWID_ and _Type_ of the sensor
@@ -27,19 +30,12 @@ If the status led is enabled in config, it will glow when running:
 - Fast blinking: temperature acquisition is happening
 
 ## Config file
-short primer on syntax of yaml: https://learnxinyminutes.com/docs/yaml/
-### Resolutions
-| resolution [bit] | readout time   [ms] |
-|------------------|---------------------|
-| 9                | 93.75               |
-| 10               | 187.5               |
-| 11               | 375                 |
-| 12               | 750                 |
+Short primer on syntax of yaml: https://learnxinyminutes.com/docs/yaml/
 
 ### Example config with explanation
 ```yaml
 storage_directory: "/home/pi/Documents/temp_daq/" # directory where to put output csv files
-interval: 10 # log temperature every [x] seconds
+interval: 10 # log temperature every [x] seconds. 
 status_led: true # enable/disable status led, blinks everytime a vibration file is written
 status_led_pin: 21  # only read if status_led == true
 sensors: 
