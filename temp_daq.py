@@ -1,4 +1,3 @@
-import time
 from threading import Thread
 from w1thermsensor import W1ThermSensor
 import csv
@@ -17,22 +16,16 @@ def main(config_file_path):
         target_directory_path = Path(config_yaml["storage_directory"])
         interval = config_yaml["interval"]
         if config_yaml["status_led"]:
-            status_led_pin = config_yaml["status_led_pin"]
+            status_led = LED(config_yaml["status_led_pin"])
+            status_led.on()
         else:
-            status_led_pin = None
+            status_led = None
 
         sensor_names = {sensor["id"]: sensor["name"] for sensor in config_yaml["sensors"]}
 
-    target_directory_path.mkdir(exist_ok=True)
-    current_timestamp = datetime.utcnow().strftime("%FT%H_%M_%S")
-    temp_csv_filename = target_directory_path.joinpath("temp_data_" + current_timestamp + ".csv")
-    if status_led_pin is not None:
-        status_led = LED(status_led_pin)
-        status_led.on()
-    else:
-        status_led = None
+    temp_csv_path = get_temp_csv_path(target_directory_path)
 
-    with open(temp_csv_filename, 'w+', buffering=1) as temp_csv_file:
+    with open(temp_csv_path, 'w+', buffering=1) as temp_csv_file:
         temp_sensors = W1ThermSensor.get_available_sensors()
 
         temp_csv_fieldnames = get_temp_dict(temp_sensors, sensor_names).keys()
@@ -49,8 +42,13 @@ def main(config_file_path):
             pass
 
 
+def get_temp_csv_path(target_directory_path):
+    target_directory_path.mkdir(exist_ok=True)
+    current_timestamp = datetime.utcnow().strftime("%FT%H_%M_%S")
+    return target_directory_path.joinpath("temp_data_" + current_timestamp + ".csv")
+
+
 def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors, status_led=None):
-    # start = time.time()
     if status_led is not None:
         status_led.blink(on_time=0.1, off_time=0.1)
 
@@ -60,9 +58,6 @@ def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors, status_led=No
 
     if status_led is not None:
         status_led.blink(on_time=1, off_time=1)
-
-    # end = time.time()
-    # print("time needed for {}: {:f}".format("", end - start))
 
 
 def get_temp_dict(temp_sensors, sensor_mapping):
@@ -87,6 +82,7 @@ def get_temps(temp_sensors):
         threads.append(process)
     for process in threads:
         process.join()
+
     return temps
 
 
