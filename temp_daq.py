@@ -1,4 +1,8 @@
+__author__ = "Jonas Lauener"
+
 from threading import Thread
+
+import apscheduler.events
 from w1thermsensor import W1ThermSensor
 import csv
 import sys
@@ -35,11 +39,19 @@ def main(config_file_path):
         scheduler = BlockingScheduler()
         scheduler.add_job(log_temperature, 'interval', (sensor_names, temp_csv_writer, temp_sensors, status_led),
                           seconds=interval, next_run_time=datetime.now())
+        scheduler.add_listener(lambda event: job_exception_handler(status_led), apscheduler.events.EVENT_JOB_ERROR)
 
         try:
             scheduler.start()
         except (KeyboardInterrupt, SystemExit):
             pass
+
+
+def job_exception_handler(status_led):
+    if status_led is not None:
+        print("Error, disable LED.")
+        status_led.off()
+
 
 
 def get_temp_csv_path(target_directory_path):
@@ -52,10 +64,16 @@ def log_temperature(sensor_mapping, temp_csv_writer, temp_sensors, status_led=No
     if status_led is not None:
         status_led.blink(on_time=0.1, off_time=0.1)
 
+        # try:
     data_dict = get_temp_dict(temp_sensors, sensor_mapping)
     print(data_dict)
     temp_csv_writer.writerow(data_dict)
-
+        # except Exception:
+        #     if status_led is not None:
+        #         print("Error, disable LED.")
+        #         status_led.off()
+        #     raise
+        # else:
     if status_led is not None:
         status_led.blink(on_time=1, off_time=1)
 
@@ -80,8 +98,12 @@ def get_temps(temp_sensors):
         process = Thread(target=get_temp, args=[sensor, temps])
         process.start()
         threads.append(process)
+
     for process in threads:
         process.join()
+
+    if len(temps) != len(temp_sensors):
+        raise ValueError("Didn't get temperatures of all sensors.")
 
     return temps
 
