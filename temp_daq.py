@@ -1,3 +1,5 @@
+__author__ = "Jonas Lauener"
+
 from threading import Thread
 from w1thermsensor import W1ThermSensor
 import csv
