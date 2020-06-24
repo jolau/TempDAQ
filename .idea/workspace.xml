@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d4813b3-a598-4330-8613-4c2373921bba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../VibrationDAQ/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../VibrationDAQ/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/temperature_ebelly_MCU.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/temperature_ebelly_MCU.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +120,7 @@
       <workItem from="1592814693646" duration="2483000" />
       <workItem from="1592824673818" duration="2811000" />
       <workItem from="1592899402935" duration="4049000" />
-      <workItem from="1592995074819" duration="809000" />
+      <workItem from="1592995074819" duration="1166000" />
     </task>
     <servers />
   </component>
