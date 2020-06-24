@@ -13,6 +13,12 @@ Data Acquisition (DAQ) for 1-wire temperature sensors like the digital sensor [D
     - Resolution is 0.0625°C
 - [Features a status LED](#status-led)
 
+### Pinout Raspberry Pi
+![rpi pinout](docs/rpi_pinout.png)
+- Black cable: GND (pin 9)
+- Orange cable: 3V3 (pin 17)
+- White cable: 1-wire (pin 7)
+
 ## Installation
 1. Enable 1-Wire support as described here: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20
 2. Run: `pip3 install -r requirements.txt`
