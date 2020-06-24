@@ -58,3 +58,7 @@ sensors:
 ```
 
 ## Example data
+As a proof-of-concept we did a test flight measuring temperatures of the  MCU resp. in the e-belly.
+- [Temperature e-belly vs MCU](https://docs.google.com/spreadsheets/d/1u8N9WZgxBrVcGJ0SZjTfflWO0SOIAV3tWEv-M_jq3uE/edit?usp=sharing) \
+    ![Chart of temperature](docs/temperature_ebelly_MCU.png)
+- [Folder with all data of first flight](https://drive.google.com/drive/folders/1a1Df1DNR1_Gn_nhkBvp-iGeVIf7CkiSz?usp=sharing)
