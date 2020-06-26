@@ -1,5 +1,6 @@
 # TempDAQ
-Data Acquisition (DAQ) for 1-wire temperature sensors like the digital sensor [DS18S20](https://www.adafruit.com/product/374) or [the thermocouple adapter MAX31850K](https://www.adafruit.com/product/1727).
+Data Acquisition (DAQ) for 1-wire temperature sensors like the digital sensor [DS18S20](https://www.adafruit.com/product/374) or [the thermocouple adapter MAX31850K](https://www.adafruit.com/product/1727). \
+_Author: Jonas Lauener_
 
 ![tempdaq](docs/tempdaq.jpg)
 
