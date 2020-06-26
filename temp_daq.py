@@ -1,14 +1,16 @@
 __author__ = "Jonas Lauener"
 
-from threading import Thread
-from w1thermsensor import W1ThermSensor
 import csv
+import errno
 import sys
 from datetime import datetime
 from pathlib import Path
+from threading import Thread
+
 import yaml
 from apscheduler.schedulers.blocking import BlockingScheduler
 from gpiozero import LED
+from w1thermsensor import W1ThermSensor
 
 
 def main(config_file_path):
@@ -29,6 +31,10 @@ def main(config_file_path):
 
     with open(temp_csv_path, 'w+', buffering=1) as temp_csv_file:
         temp_sensors = W1ThermSensor.get_available_sensors()
+
+        if len(temp_sensors) == 0:
+            print("Couldn't find any temperature sensors.")
+            sys.exit(errno.ENXIO)
 
         temp_csv_fieldnames = get_temp_dict(temp_sensors, sensor_names).keys()
         temp_csv_writer = csv.DictWriter(temp_csv_file, temp_csv_fieldnames)

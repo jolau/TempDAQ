@@ -64,7 +64,13 @@ sensors:
 ```
 
 ## Example data
+### First flight
 As a proof-of-concept we did a test flight measuring temperatures of the  MCU resp. in the e-belly.
 - [Temperature e-belly vs MCU](https://docs.google.com/spreadsheets/d/1u8N9WZgxBrVcGJ0SZjTfflWO0SOIAV3tWEv-M_jq3uE/edit?usp=sharing) \
-    ![Chart of temperature](docs/temperature_ebelly_MCU.png)
+    ![Chart of temperature](docs/plot_temperature_ebelly_MCU.png)
 - [Folder with all data of first flight](https://drive.google.com/drive/folders/1a1Df1DNR1_Gn_nhkBvp-iGeVIf7CkiSz?usp=sharing)
+
+### Temperature Chamber
+To see how accurate the sensors are, I've put them in the temperature chamber. The chamber did the temperatures -10°C, 0°C, 30°C and 50°C.
+- [Temperature chamber logs](https://docs.google.com/spreadsheets/d/1ClHEQQCnwMUs4qwDfxReGYilxKiRTB6zRDz9LLsDm4E/edit?usp=sharing) \
+![plot temp chamber](docs/plot_temperature_chamber.png)

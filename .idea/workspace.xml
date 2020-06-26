@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d4813b3-a598-4330-8613-4c2373921bba" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/plot_temperature_chamber.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/temperature_ebelly_MCU.png" beforeDir="false" afterPath="$PROJECT_DIR$/docs/plot_temperature_ebelly_MCU.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp_daq.py" beforeDir="false" afterPath="$PROJECT_DIR$/temp_daq.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,6 +124,7 @@
       <workItem from="1592824673818" duration="2811000" />
       <workItem from="1592899402935" duration="4049000" />
       <workItem from="1592995074819" duration="2284000" />
+      <workItem from="1593172529986" duration="991000" />
     </task>
     <servers />
   </component>
@@ -133,8 +137,8 @@
     </state>
     <state x="424" y="273" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.23.1920.1177/-1440.1048.1440.877/0.23.1920.1177@0.23.1920.1177" timestamp="1592494451159" />
     <state x="424" y="273" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.23.1920.1177/0.23.1920.1177/-1440.958.1440.877@0.23.1920.1177" timestamp="1589995559770" />
-    <state width="939" height="354" key="GridCell.Tab.0.bottom" timestamp="1592903710216">
-      <screen x="1920" y="23" width="1920" height="1177" />
+    <state width="1259" height="438" key="GridCell.Tab.0.bottom" timestamp="1593173145550">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="939" height="358" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1592605892991" />
     <state width="939" height="312" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1592856929048" />
@@ -146,8 +150,9 @@
     <state width="939" height="312" key="GridCell.Tab.0.bottom/233.1103.1440.823/0.23.1920.1057@0.23.1920.1057" timestamp="1592834059152" />
     <state width="939" height="312" key="GridCell.Tab.0.bottom/233.1103.1440.825/0.23.1920.1057@0.23.1920.1057" timestamp="1592840470571" />
     <state width="939" height="312" key="GridCell.Tab.0.bottom/233.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1592569650928" />
-    <state width="939" height="354" key="GridCell.Tab.0.center" timestamp="1592903710215">
-      <screen x="1920" y="23" width="1920" height="1177" />
+    <state width="1259" height="438" key="GridCell.Tab.0.bottom/600.1463.1440.825/0.23.2560.1417@0.23.2560.1417" timestamp="1593173145550" />
+    <state width="1259" height="438" key="GridCell.Tab.0.center" timestamp="1593173145550">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="939" height="358" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1592605892990" />
     <state width="939" height="312" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1592856929047" />
@@ -159,8 +164,9 @@
     <state width="939" height="312" key="GridCell.Tab.0.center/233.1103.1440.823/0.23.1920.1057@0.23.1920.1057" timestamp="1592834059152" />
     <state width="939" height="312" key="GridCell.Tab.0.center/233.1103.1440.825/0.23.1920.1057@0.23.1920.1057" timestamp="1592840470570" />
     <state width="939" height="312" key="GridCell.Tab.0.center/233.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1592569650927" />
-    <state width="939" height="354" key="GridCell.Tab.0.left" timestamp="1592903710214">
-      <screen x="1920" y="23" width="1920" height="1177" />
+    <state width="1259" height="438" key="GridCell.Tab.0.center/600.1463.1440.825/0.23.2560.1417@0.23.2560.1417" timestamp="1593173145550" />
+    <state width="1259" height="438" key="GridCell.Tab.0.left" timestamp="1593173145549">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="939" height="358" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1592605892990" />
     <state width="939" height="312" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1592856929045" />
@@ -172,8 +178,9 @@
     <state width="939" height="312" key="GridCell.Tab.0.left/233.1103.1440.823/0.23.1920.1057@0.23.1920.1057" timestamp="1592834059151" />
     <state width="939" height="312" key="GridCell.Tab.0.left/233.1103.1440.825/0.23.1920.1057@0.23.1920.1057" timestamp="1592840470569" />
     <state width="939" height="312" key="GridCell.Tab.0.left/233.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1592569650927" />
-    <state width="939" height="354" key="GridCell.Tab.0.right" timestamp="1592903710216">
-      <screen x="1920" y="23" width="1920" height="1177" />
+    <state width="1259" height="438" key="GridCell.Tab.0.left/600.1463.1440.825/0.23.2560.1417@0.23.2560.1417" timestamp="1593173145549" />
+    <state width="1259" height="438" key="GridCell.Tab.0.right" timestamp="1593173145550">
+      <screen x="0" y="23" width="2560" height="1417" />
     </state>
     <state width="939" height="358" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1592605892991" />
     <state width="939" height="312" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1592856929048" />
@@ -185,6 +192,7 @@
     <state width="939" height="312" key="GridCell.Tab.0.right/233.1103.1440.823/0.23.1920.1057@0.23.1920.1057" timestamp="1592834059152" />
     <state width="939" height="312" key="GridCell.Tab.0.right/233.1103.1440.825/0.23.1920.1057@0.23.1920.1057" timestamp="1592840470570" />
     <state width="939" height="312" key="GridCell.Tab.0.right/233.1103.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1592569650928" />
+    <state width="1259" height="438" key="GridCell.Tab.0.right/600.1463.1440.825/0.23.2560.1417@0.23.2560.1417" timestamp="1593173145550" />
     <state width="1878" height="406" key="GridCell.Tab.1.bottom" timestamp="1589996419858">
       <screen x="0" y="23" width="1920" height="1177" />
     </state>
@@ -230,6 +238,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/TempDAQ$playground.coverage" NAME="playground Coverage Results" MODIFIED="1589993146370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/TempDAQ$temp_daq.coverage" NAME="temp_daq Coverage Results" MODIFIED="1592903206358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/TempDAQ$temp_daq.coverage" NAME="temp_daq Coverage Results" MODIFIED="1593173145539" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
