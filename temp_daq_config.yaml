@@ -4,8 +4,8 @@ status_led: true
 status_led_pin: 21
 sensors:
   - name: sensor1
-    id: 00000c43b797
+    id: 00000c43b797 #1
   - name: sensor2
-    id: 00000c442341
+    id: 00000c442341 #2
   - name: sensor3
-    id: 00000c4419a8
+    id: 00000c4419a8 #3
