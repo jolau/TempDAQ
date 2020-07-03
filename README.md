@@ -21,6 +21,7 @@ _Author: Jonas Lauener_
 - White cable: 1-wire (pin 7)
 
 ## Installation
+_In case you want to setup your own TempDAQ on a Raspberry Pi:_
 1. Enable 1-Wire support as described here: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20
 2. Run: `pip3 install -r requirements.txt`
 
