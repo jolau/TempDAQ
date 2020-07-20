@@ -1,11 +1,13 @@
 # TempDAQ
-Data Acquisition (DAQ) for 1-wire temperature sensors like the digital sensor [DS18S20](https://www.adafruit.com/product/374) or [the thermocouple adapter MAX31850K](https://www.adafruit.com/product/1727). \
-_Author: Jonas Lauener_
+Data Acquisition (DAQ) for 1-wire temperature sensors like the digital sensor [DS18S20](https://www.adafruit.com/product/374) or [the thermocouple adapter MAX31850K](https://www.adafruit.com/product/1727). The TempDAQ was developed as part of an internship at [Wingtra](https://wingtra.com/) by [Jonas Lauener](https://www.jolau.ch/).  
+
+Copyright (c) 2020, Jonas Lauener & Wingtra AG\
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
 ![tempdaq](docs/tempdaq.jpg)
 
 ## Hardware
-- The Raspberry Pi is powered over the PPK port of the MCU.
+- Raspberry Pi
 - Up to 20 sensor can be connected 
     - The number of connected sensors influences the sampling rate - with three sensors it takes around 1.03 seconds per reading of all sensors.
 - [DS18S20](https://www.adafruit.com/product/374): The IC sensor also showed in the picture above:
@@ -66,13 +68,7 @@ sensors:
 ```
 
 ## Example data
-### First flight
-As a proof-of-concept we did a test flight measuring temperatures of the  MCU resp. in the e-belly.
-- [Temperature e-belly vs MCU](https://docs.google.com/spreadsheets/d/1u8N9WZgxBrVcGJ0SZjTfflWO0SOIAV3tWEv-M_jq3uE/edit?usp=sharing) \
-    ![Chart of temperature](docs/plot_temperature_ebelly_MCU.png)
-- [Folder with all data of first flight](https://drive.google.com/drive/folders/1a1Df1DNR1_Gn_nhkBvp-iGeVIf7CkiSz?usp=sharing)
-
 ### Temperature Chamber
 To see how accurate the sensors are, I've put them in the temperature chamber. The chamber did the temperatures -10°C, 0°C, 30°C and 50°C.
-- [Temperature chamber logs](https://docs.google.com/spreadsheets/d/1ClHEQQCnwMUs4qwDfxReGYilxKiRTB6zRDz9LLsDm4E/edit?usp=sharing) \
+- [Temperature chamber raw data](docs/temp_data_2020-06-26T09_36_41.csv) \
 ![plot temp chamber](docs/plot_temperature_chamber.png)
