@@ -18,14 +18,25 @@ Copyright (c) 2020, Jonas Lauener & Wingtra AG\
 
 ### Pinout Raspberry Pi
 ![rpi pinout](docs/rpi_pinout.png)
-- Black cable: GND (pin 9)
-- Orange cable: 3V3 (pin 17)
-- White cable: 1-wire (pin 7)
+```
+Raspi VCC (3V3) Pin 1 -----------------------------   VCC    DS18B20
+                                               |
+                                               |
+                                               R1 = 4k7 ...10k
+                                               |
+                                               |
+Raspi GPIO 4    Pin 7 -----------------------------   Data   DS18B20
+
+
+Raspi GND       Pin 6 -----------------------------   GND    DS18B20
+```
 
 ## Installation
 _In case you want to setup your own TempDAQ on a Raspberry Pi:_
 1. Enable 1-Wire support as described here: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20
 2. Run: `pip3 install -r requirements.txt`
+
+Make sure that you have [enabled 1-Wire](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-11-ds18b20-temperature-sensing/ds18b20#enable-1-wire-3027561-2).
 
 ### Enable/Disable Autostart
 1. Edit temp_daq.py and temp_daq_config.yaml paths in temp_daq.service file to your own needs 
