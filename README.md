@@ -1,6 +1,8 @@
 # TempDAQ
 Data Acquisition (DAQ) for 1-wire temperature sensors like the digital sensor [DS18S20](https://www.adafruit.com/product/374) or [the thermocouple adapter MAX31850K](https://www.adafruit.com/product/1727). The TempDAQ was developed as part of an internship at [Wingtra](https://wingtra.com/) by [Jonas Lauener](https://www.jolau.ch/).  
 
+**For any technical questions, please open an issue: https://github.com/jolau/TempDAQ/issues/new/choose**
+
 Copyright (c) 2020, Jonas Lauener & Wingtra AG\
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 
